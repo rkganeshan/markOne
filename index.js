@@ -31,7 +31,15 @@ var questionBank = [
 
 function quiz(question, answer) {
   var userAnswer = readlineSync.question(question);
-  if (answer.includes(userAnswer)) {
+  if (
+    userAnswer == answer ||
+    userAnswer == answer.toUpperCase() ||
+    userAnswer == answer.toLowerCase()
+  ) {
+    console.log(`${chalk.green('Correct')}`);
+    score += 1;
+  }
+  else if (answer.includes(userAnswer)) {
     console.log(`${chalk.green('Yay! Correct Answer')}`);
     score += 1;
   } else {
